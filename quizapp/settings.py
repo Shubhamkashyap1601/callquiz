@@ -128,5 +128,3 @@ STATICSTORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 APPEND_SLASH = False
-
-CSRF_TRUSTED_ORIGINS= [""]
