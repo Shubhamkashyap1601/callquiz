@@ -80,7 +80,7 @@ python-dotenv==1.0.1
 pytweening==1.2.0
 pytz==2024.1
 pywhatkit==4.6
-pywin32==306
+# pywin32==306
 pyzmq==26.0.3
 redis==5.0.6
 requests==2.32.3
