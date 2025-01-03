@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ quiz.title }} - Quiz Detail</title>
+    <style>
+        /* Add your styles here */
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{{ quiz.title }}</h1>
+    </header>
+
+    <div class="container">
+        <h2>Description</h2>
+        <p>{{ quiz.description }}</p>
+        
+        <div class="button-container">
+            <a href="{% url 'attempt_quiz' quiz_id=quiz.id %}" class="button">Start Quiz</a>
+        </div>
+
+        <!-- Form for submitting the score after quiz completion -->
+        <form method="POST">
+            {% csrf_token %}
+            <label for="score">Your Score: </label>
+            <input type="number" name="score" id="score" required>
+            <button type="submit">Submit Score</button>
+        </form>
+    </div>
+</body>
+</html>

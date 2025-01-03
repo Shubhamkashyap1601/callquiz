@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .button-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .quiz-list {
+            margin-top: 30px;
+        }
+        .quiz-list h2 {
+            color: #4CAF50;
+        }
+        .quiz-list ul {
+            list-style: none;
+            padding: 0;
+        }
+        .quiz-list li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .quiz-list li h3 {
+            margin: 0;
+            color: #333;
+        }
+        .quiz-list li p {
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Quiz Home</h1>
+    </header>
+
+    <!-- Display leaderboard for each quiz -->
+    <!-- {% if leaderboard_data %}
+        {% for quiz, leaderboard in leaderboard_data.items %}
+        <h2>{{ quiz.name }} - Leaderboard</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in leaderboard %}
+                    <tr>
+                        <td>{{ entry.user_name }}</td>
+                        <td>{{ entry.score }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="2">No entries yet.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endfor %}
+    {% else %}
+        <p>No leaderboards available.</p>
+    {% endif %} -->
+
+    <h2>Available Quizzes</h2>
+    <ul class="quiz-list">
+        {% for quiz in quizzes %}
+            <li>
+                <h3>{{ quiz.name }}</h3>
+                <p>{{ quiz.description }}</p>
+                <a href="{% url 'quiz_leaderboard' quiz.id %}" class="button">View Leaderboard</a>  <!-- Link to leaderboard page -->
+                <a href="{% url 'quiz_detail' quiz.id %}" class="button">Start Quiz</a>  <!-- Link to quiz page -->
+            </li>
+        {% empty %}
+            <li>No quizzes available at the moment.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
